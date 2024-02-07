@@ -1,6 +1,6 @@
 import request, { gql } from 'graphql-request';
 
-export const getCarsList = async() => {
+export const getCarsList = async () => {
   const query = gql`
     query CarLists {
       carLists {
@@ -12,10 +12,17 @@ export const getCarsList = async() => {
         publishedAt
         updatedAt
         stage
+        image {
+          url
+        }
+        carType
       }
     }
   `;
 
-  const result = await request('https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clsaqhmfp2aj101w3878o2ibi/master',query);
+  const result = await request(
+    'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clsaqhmfp2aj101w3878o2ibi/master',
+    query
+  );
   return result;
 };

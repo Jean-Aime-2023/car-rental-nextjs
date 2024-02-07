@@ -20,7 +20,7 @@ function CarCard(props: any) {
       <span className="text-[14px] font-light"> /day</span>
       <Image
         src={car.image?.url}
-        alt=""
+        alt="car"
         width={220}
         height={200}
         className="w-[250px] h-[150px] mb-3 object-contain"

@@ -1,17 +1,23 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaGasPump } from 'react-icons/fa';
 import { MdAirlineSeatReclineNormal } from 'react-icons/md';
 import { PiSteeringWheelFill } from 'react-icons/pi';
 
 function CarCard(props: any) {
   const [car, setCar] = useState(props.car);
-  return (
+
+  useEffect(() => {
+    if (props.car) {
+      setCar(props.car);
+    }
+  }, [props.car]);
+  return car&&(
     <div className="group bg-gray-50 p-2 sm:p-5 rounded-3xl m-1 sm:m-5 hover:bg-white hover:border-[1px] cursor-pointer duration-75 ease-in-out border-blue-500">
       <h2 className="text-[20px] font-medium mb-2">{car.name}</h2>
-      <span className="text-[12px] font-light">$</span>
-      {car.price}
-      <span className="text-[12px] font-light"> /day</span>
+      <span className="text-[17px] font-light">$</span>{' '}
+      <span className='text-3xl font-bold'>{car.price}</span> {' '}
+      <span className="text-[14px] font-light"> /day</span>
       <Image
         src={car.image?.url}
         alt=""
@@ -27,8 +33,7 @@ function CarCard(props: any) {
         <div className="text-center text-gray-500">
           <MdAirlineSeatReclineNormal className="w-full text-[22px] mb-2" />
           <h2 className="line-clamp-5 text-[14px] font-light">
-            {/* {car.stage}   */}
-            Seat
+            5 Seats {/* {car.stage}   */}
           </h2>
         </div>
         <div className="text-center text-gray-500">
@@ -46,13 +51,13 @@ function CarCard(props: any) {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
             className="w-4 h-4 text-white"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
             />
           </svg>
